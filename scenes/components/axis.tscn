@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://btw4p1ux60hfd"]
+
+[ext_resource type="Script" uid="uid://cbwlr2msocmoi" path="res://scripts/components/axis.gd" id="1_eojej"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eojej"]
+top_radius = 0.03
+bottom_radius = 0.03
+
+[node name="Axis" type="MeshInstance3D"]
+process_physics_priority = 1
+mesh = SubResource("CylinderMesh_eojej")
+script = ExtResource("1_eojej")

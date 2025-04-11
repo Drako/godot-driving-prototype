@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwmiu8171xmmj"]
+
+[ext_resource type="Texture2D" uid="uid://cvqvm8g4hr8je" path="res://assets/kenney-prototype-textures/Dark/texture_13.png" id="1_yjjn1"]
+[ext_resource type="PackedScene" uid="uid://bedddpeso0b3d" path="res://scenes/cars/buggy.tscn" id="2_yjjn1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bdnxh"]
+sky_top_color = Color(0.0213697, 0.34268, 0.95945, 1)
+sky_horizon_color = Color(0.495108, 0.552193, 0.702425, 1)
+ground_bottom_color = Color(0.264015, 0.171043, 0.155201, 1)
+ground_horizon_color = Color(0.495108, 0.552193, 0.702425, 1)
+
+[sub_resource type="Sky" id="Sky_msxrg"]
+sky_material = SubResource("ProceduralSkyMaterial_bdnxh")
+
+[sub_resource type="Environment" id="Environment_y87cy"]
+background_mode = 2
+sky = SubResource("Sky_msxrg")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3uvi"]
+albedo_texture = ExtResource("1_yjjn1")
+uv1_triplanar = true
+
+[node name="Demo" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y87cy")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+use_collision = true
+collision_mask = 0
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_u3uvi")
+
+[node name="Buggy" parent="." instance=ExtResource("2_yjjn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.950635, -3.77415)
+center_of_mass = Vector3(0, 0.516141, 0.752071)
