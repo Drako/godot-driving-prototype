@@ -41,4 +41,3 @@ material = SubResource("StandardMaterial3D_u3uvi")
 
 [node name="Buggy" parent="." instance=ExtResource("2_yjjn1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.950635, -3.77415)
-center_of_mass = Vector3(0, 0.516141, 0.752071)

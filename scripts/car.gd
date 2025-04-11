@@ -11,5 +11,13 @@ func _process(delta: float) -> void:
 		Input.get_axis(INPUT_STEER_RIGHT, INPUT_STEER_LEFT) * max_steering,
 		delta * 2.5
 	)
-	engine_force = Input.get_action_strength(&"accelerate") * 500.0
-	brake = Input.get_action_strength(&"brake") * 300.0
+	engine_force = move_toward(
+		engine_force,
+		Input.get_action_strength(&"accelerate") * 500.0,
+		delta * 100.0
+	)
+	brake = move_toward(
+		brake,
+		Input.get_action_strength(&"brake") * 300.0,
+		delta * 50.0
+	)
